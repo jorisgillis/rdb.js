@@ -1,10 +1,9 @@
 
 // Index
 exports.index = function(req, res) {
-    
-    res.render('index');
-};
-
-exports.login = function(req, res){
-    res.render('login');
+    if(typeof req.user === 'undefined'){
+        res.render('login');
+    } else {
+        res.render('index');
+    }
 };

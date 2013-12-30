@@ -1,6 +1,7 @@
 var express = require('express'),
     routes = require('./routes'),
     passport = require('passport'),
+    path = require('path'),
     GoogleStrategy = require('passport-google').Strategy;
 
 var app = express();
@@ -13,6 +14,7 @@ app.configure(function(){
     app.use(express.session({secret: 'test'}));
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(express.static(path.join(__dirname, 'public')));
 });
 
 passport.serializeUser(function(user, done){
@@ -34,12 +36,12 @@ passport.use(new GoogleStrategy({
 
 app.get('/', routes.index);
 // Login URLs
-app.get('/login', routes.login);
 app.get('/auth/google', passport.authenticate('google'));
-app.get('/auth/google/return', passport.authenticate('google', {
-    succesRedirect: '/',
-    failureRedirect: '/login'
-}));
+app.get('/auth/google/return',
+    passport.authenticate('google', {failureRedirect: '/'}),
+    function(req, res){
+        res.redirect('/');
+    });
 // Fallback URL
 app.get('*', routes.index);
 
