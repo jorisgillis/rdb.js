@@ -5,7 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "express": "~3.4.7",
-    "jade": "~1.0.1"
+    "jade": "~1.0.1",
+    "sqlite3": "~2.1.19"
   },
   "devDependencies": {},
   "scripts": {
