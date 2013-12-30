@@ -1,8 +1,9 @@
 var express = require('express'),
     routes = require('./routes'),
     passport = require('passport'),
-    path = require('path'),
-    GoogleStrategy = require('passport-google').Strategy;
+    GoogleStrategy = require('passport-google').Strategy,
+    db = require('./models');
+    path = require('path');
 
 var app = express();
 var url = process.env.HOSTNAME || 'localhost';
@@ -46,4 +47,13 @@ app.get('/logout', routes.logout);
 // Fallback URL
 app.get('*', routes.index);
 
-app.listen(port);
+db
+    .sequelize
+    .sync({ force: true })
+    .complete(function(err) {
+        if (err) {
+            throw err
+        } else {
+            app.listen(port);
+        }
+    });
