@@ -35,13 +35,14 @@ passport.use(new GoogleStrategy({
 ));
 
 app.get('/', routes.index);
-// Login URLs
+// Auth URLs
 app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/return',
     passport.authenticate('google', {failureRedirect: '/'}),
     function(req, res){
         res.redirect('/');
     });
+app.get('/logout', routes.logout);
 // Fallback URL
 app.get('*', routes.index);
 
