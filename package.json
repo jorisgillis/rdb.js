@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "~3.4.7",
     "jade": "~1.0.1",
-    "sqlite3": "~2.1.19"
+    "sqlite3": "~2.1.19",
+    "underscore": "~1.5.2"
   },
   "devDependencies": {},
   "scripts": {
