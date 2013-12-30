@@ -1,0 +1,23 @@
+{
+  "name": "rdb.js",
+  "version": "0.0.0",
+  "description": "rdb.js ======",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~3.4.7",
+    "jade": "~1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jorisgillis/rdb.js.git"
+  },
+  "author": "Joris Gillis, San Gillis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jorisgillis/rdb.js/issues"
+  }
+}
