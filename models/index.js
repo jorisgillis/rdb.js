@@ -14,7 +14,6 @@ fs
     })
     .forEach(function(file) {
         var modelDefinition = require(path.join(__dirname, file));
-        console.log(modelDefinition.name);
         var model = sequelize.import(modelDefinition.name, modelDefinition.definition);
         db[modelDefinition.name] = model;
     })
