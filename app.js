@@ -49,7 +49,7 @@ app.get('*', routes.index);
 
 db
     .sequelize
-    .sync({ force: true })
+    .sync({ force: false })
     .complete(function(err) {
         if (err) {
             throw err

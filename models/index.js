@@ -3,7 +3,7 @@ var fs        = require('fs'),
     path      = require('path'),
     Sequelize = require('sequelize'),
     lodash    = require('lodash'),
-    sequelize = new Sequelize('database.db', null, null, {dialect: "sqlite"}),
+    sequelize = new Sequelize('database', 'username', 'password', {dialect: "sqlite", storage: 'database.db'}),
     db        = {};
 
 // Loading all models 

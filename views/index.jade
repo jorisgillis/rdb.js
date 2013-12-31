@@ -1,4 +1,7 @@
 extends logged_in_base
 
 block content
-    p Hello world
+    div.row-fluid
+        each recipe in recipes
+            div.span4
+                h1 recipe.name
