@@ -1,9 +1,11 @@
 extends logged_in_base
 
 block content
-    masonry(column-width="250" item-selector=".recipe")
-        div.recipe(ng-repeat="recipe in recipes")
-            h1.recipe-title recipe.name
+    div(ng-app="rdb")
+        div(ng-controller="rdbController")
+            masonry(column-width="250" item-selector=".recipe")
+                div.recipe(ng-repeat="recipe in recipes")
+                    h1.recipe-title recipe.name
 
 block javascript
     script(src='app.angular.js')
