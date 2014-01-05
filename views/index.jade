@@ -1,7 +1,9 @@
 extends logged_in_base
 
 block content
-    div.row-fluid
-        each recipe in recipes
-            div.span4
-                h1 recipe.name
+    masonry(column-width="250" item-selector=".recipe")
+        div.recipe(ng-repeat="recipe in recipes")
+            h1.recipe-title recipe.name
+
+block javascript
+    script(src='app.angular.js')
