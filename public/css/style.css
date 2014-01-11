@@ -16,11 +16,14 @@ body {
 
 .recipe-title {
     font-size: 115%;
+    margin-top: 2px;
 }
 
 .recipe {
+    width: 240px;
     border: 1px solid #999999;
     margin-top: 3px;
     margin-left: 5px;
     margin-right: 5px;
+    padding: 4px;
 }
