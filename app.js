@@ -35,7 +35,9 @@ passport.use(new GoogleStrategy({
     }
 ));
 
+// Index
 app.get('/', routes.index);
+
 // Auth URLs
 app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/return',
@@ -44,9 +46,14 @@ app.get('/auth/google/return',
         res.redirect('/');
     });
 app.get('/logout', routes.logout);
+
+// REST Interface
+
+
 // Fallback URL
 app.get('*', routes.index);
 
+// Setting up database and starting application
 db
     .sequelize
     .sync({ force: false })
