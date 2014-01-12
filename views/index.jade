@@ -4,8 +4,7 @@ block content
     div(ng-app="rdb")
         div(ng-controller="rdbController")
             masonry(column-width="250" item-selector=".recipe")
-                div.recipe(ng-repeat="recipe in recipes")
-                    h1.recipe-title recipe.name
-
-block javascript
-    script(src='app.angular.js')
+                div.recipe(ng-repeat='recipe in recipes')
+                    h1.recipe-title {{recipe.name}}
+                    p
+                        span(class="glyphicon glyphicon-user") {{recipe.persons}}

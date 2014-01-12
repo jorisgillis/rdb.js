@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.0.3",
-    "angular-masonry": "~0.7.0"
+    "angular-masonry": "~0.7.0",
+    "angular-resource": "~1.2.8"
   }
 }

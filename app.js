@@ -48,7 +48,7 @@ app.get('/auth/google/return',
 app.get('/logout', routes.logout);
 
 // REST Interface
-
+app.get('/recipe', routes.overview);
 
 // Fallback URL
 app.get('*', routes.index);
