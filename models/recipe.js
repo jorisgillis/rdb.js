@@ -4,7 +4,6 @@ module.exports.name = "Recipe";
 module.exports.definition = function(sequelize, DataTypes) {
     var Recipe = sequelize.define('Recipe', {
         name: DataTypes.STRING,
-        creation_date: DataTypes.DATE,
         preparationTime: DataTypes.INTEGER,
         persons: DataTypes.INTEGER,
         preparation: DataTypes.TEXT,
