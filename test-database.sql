@@ -34,8 +34,8 @@ INSERT INTO Ingredients VALUES('Butter', 10, date('now'), date('now'));
 -- Recipes
 INSERT INTO Recipes VALUES('Burger', 30, 4, 'Flip it!', 0, 1, date('now'), date('now'), 1);
 INSERT INTO Recipes VALUES('Steak', 45, 4, 'Burn it!', 0, 2, date('now'), date('now'), 1);
-INSERT INTO Recipes VALUES('Vegan Burger', 25, 4, 'Mash it!', 0, 3, date('now'), date('now'), 2);
-INSERT INTO Recipes VALUES('Salade', 15, 4, 'Mix it!', 0, 4, date('now'), date('now'), 2);
+INSERT INTO Recipes VALUES('Vegan Burger', 25, 4, 'Mash it!', 1, 3, date('now'), date('now'), 2);
+INSERT INTO Recipes VALUES('Salade', 15, 4, 'Mix it!', 1, 4, date('now'), date('now'), 2);
 
 -- Linking Recipes & Types
 INSERT INTO RecipesTypes VALUES(date('now'), date('now'), 2, 1);
