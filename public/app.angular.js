@@ -1,9 +1,9 @@
 'use strict';
 
-var rdb = angular.module('rdb', ['ngResource']);
+var rdb = angular.module('rdb', ['ngResource', 'ngRoute']);
 
 rdb.controller('rdbController', 
-    ['$scope', 'Recipes',
+    ['$scope', '$routeProvider', 'Recipes',
         function($scope, Recipes) {
             var allRecipes = Recipes.all().$promise;
             allRecipes.then(
