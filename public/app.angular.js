@@ -5,9 +5,11 @@ var rdb = angular.module('rdb', ['ngResource']);
 rdb.controller('rdbController', 
     ['$scope', 'Recipes',
         function($scope, Recipes) {
-            Recipes.all(function(recipes) {
-                $scope.recipes = recipes;       
-            });
+            var allRecipes = Recipes.all().$promise;
+            allRecipes.then(
+                function(result) {
+                    $scope.recipes = result.recipes;
+                });
         }
     ]
 );
@@ -15,7 +17,8 @@ rdb.controller('rdbController',
 rdb.factory('Recipes', 
     ['$resource', 
         function($resource) {
-            return $resource('/recipe/:recipeId', {},
+            return $resource('/recipe/:recipeId', 
+                {},
                 {
                     all: {method: 'GET'}
                 });
