@@ -3,13 +3,14 @@ extends logged_in_base
 block content
     div(ng-app="rdb")
         div(ng-controller="rdbController")
-            masonry(column-width="250" item-selector=".recipe")
-                div.recipe(ng-repeat='recipe in recipes')
-                    h1.recipe-title {{recipe.name}}
-                    p
-                        span(class="glyphicon glyphicon-user") {{recipe.persons}}
-                    p
-                        span(class="glyphicon glyphicon-time")
-                        {{recipe.preparationTime}}
-                    p
-                        span(class="glyphicon glyphicon-tree-deciduous" ng-show='recipe.vegetarian')
+            masonry(column-width="245" item-selector=".recipe")
+                a(ng-repeat='recipe in recipes' href='recipe/{{recipe.id}}')
+                    div.recipe
+                        h1.recipe-title {{recipe.name}} 
+                        p
+                            span(class="glyphicon glyphicon-user") {{recipe.persons}}
+                        p
+                            span(class="glyphicon glyphicon-time")
+                            {{recipe.preparationTime}}
+                        p
+                            span(class="glyphicon glyphicon-tree-deciduous" ng-show='recipe.vegetarian')
