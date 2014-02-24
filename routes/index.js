@@ -1,5 +1,6 @@
 var db = require('../models');
 
+//-- Regular HTTP requests
 exports.index = function(req, res) {
     if(typeof req.user === 'undefined'){
         res.render('login');
@@ -13,6 +14,8 @@ exports.logout = function(req, res) {
     res.redirect('/');
 }
 
+
+//-- REST API
 exports.overview = function(req, res) {
     console.log("Overview!");
     db.Recipe.findAll().success(
