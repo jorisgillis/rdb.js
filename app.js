@@ -9,6 +9,8 @@ var app = express();
 var url = process.env.HOSTNAME || 'localhost';
 var port = process.env.PORT || '3000';
 app.configure(function(){
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
     app.use(express.cookieParser())
     app.use(express.session({secret: 'test'}));
     app.use(passport.initialize());
@@ -33,6 +35,8 @@ passport.use(new GoogleStrategy({
     }
 ));
 
+// Index
+app.get('/', routes.index);
 
 // Auth URLs
 app.get('/auth/google', passport.authenticate('google'));
