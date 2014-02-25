@@ -48,8 +48,8 @@ app.get('/auth/google/return',
 app.get('/logout', routes.logout);
 
 // REST Interface
-app.get('/recipe/:recipeId', routes.recipe);
-app.get('/recipe', routes.overview);
+app.get('/api/recipe/:recipeId', routes.recipe);
+app.get('/api/recipe', routes.overview);
 
 // Fallback URL
 app.get('*', routes.index);

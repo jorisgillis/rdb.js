@@ -1,0 +1,12 @@
+<div ng-controller="overviewController">
+    <masonry column-width="245" item-selector=".recipe">
+        <a ng-repeat='recipe in recipes' href='recipe/{{recipe.id}}'>
+            <div class="recipe">
+                <h1 class="recipe-title">{{recipe.name}}</h1>
+                <p><span class="glyphicon glyphicon-user">{{recipe.persons}}</span></p>
+                <p><span class="glyphicon glyphicon-time">{{recipe.preparationTime}}</span></p>
+                <p><span class="glyphicon glyphicon-tree-deciduous" ng-show='recipe.vegetarian'></span></p>
+            </div>
+        </a>
+    </masonry>
+</div>

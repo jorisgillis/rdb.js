@@ -3,18 +3,24 @@
 var rdb = angular.module('rdb', ['ngResource', 'ngRoute']);
 
 rdb.config(function($routeProvider) {
-    // Recipe
-    $routeProvider.when('/recipe/:recipeId', 
+    // Overview
+    $routeProvider.
+    when('/',
         {
-            templateUrl: 'recipe.html',
-            controller: 'RecipeController'
-        });
+            templateUrl: 'templates/overview.html',
+        }).
+
+    // Recipe
+    when('/recipe/:recipeId', 
+        {
+            templateUrl: 'templates/recipe.html',
+        }).
 
     // Otherwise: go to index
-    $routeProvider.otherwise({redirectoTo: '/'});
+    otherwise({templateUrl: 'templates/overview.html'});
 });
 
-rdb.controller('rdbController', 
+rdb.controller('overviewController', 
     ['$scope', 'Recipes',
         function($scope, Recipes) {
             var allRecipes = Recipes.all().$promise;
@@ -26,13 +32,25 @@ rdb.controller('rdbController',
     ]
 );
 
+rdb.controller('recipeController',
+    ['$scope', 'Recipes', 
+        function($scope, Recipes) {
+            var recipe = Recipes.recipe({recipeId: "1"}).$promise;
+            recipe.then(function(result) {
+                $scope.recipe = result.recipe;
+            })
+        }
+    ]
+);
+
 rdb.factory('Recipes', 
     ['$resource', 
         function($resource) {
-            return $resource('/recipe/:recipeId', 
+            return $resource('/api/recipe/:recipeId', 
                 {},
                 {
-                    all: {method: 'GET'}
+                    all: {method: 'GET'},
+                    recipe: {method: 'GET', params: {recipeId: "1"}}
                 });
         }
     ]

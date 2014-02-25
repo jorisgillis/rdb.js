@@ -17,7 +17,6 @@ exports.logout = function(req, res) {
 
 //-- REST API
 exports.overview = function(req, res) {
-    console.log("Overview!");
     db.Recipe.findAll().success(
         function(recipes) {
             res.json({'recipes': recipes});
