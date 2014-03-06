@@ -4,7 +4,6 @@ var rdb = angular.module('rdb', ['ngResource', 'ngRoute']);
 
 rdb.config(function($routeProvider) {
     // Overview
-    console.log($routeProvider);
     $routeProvider.
     when("/",
         {
@@ -20,13 +19,12 @@ rdb.config(function($routeProvider) {
         }).
 
     // Otherwise: go to index
-    otherwise({templateUrl: "/templates/overview.html"});
+    otherwise({templateUrl: "/templates/recipe.html"});
 });
 
 rdb.controller('overviewController', 
     ['$scope', 'Recipes', '$route',
         function($scope, Recipes, $route) {
-            console.log($route);
             var allRecipes = Recipes.all().$promise;
             allRecipes.then(
                 function(result) {
@@ -39,7 +37,6 @@ rdb.controller('overviewController',
 rdb.controller('recipeController',
     ['$scope', 'Recipes', '$route',
         function($scope, Recipes, $route) {
-            console.log($route);
             var recipe = Recipes.recipe({recipeId: "1"}).$promise;
             recipe.then(function(result) {
                 $scope.recipe = result.recipe;
@@ -55,7 +52,8 @@ rdb.factory('Recipes',
                 {},
                 {
                     all: {method: 'GET'},
-                    recipe: {method: 'GET', params: {recipeId: "1"}}
+                    recipe: {method: 'GET', params: {recipeId: "1"}},
+                    save: {method: 'PUT'}
                 });
         }
     ]
