@@ -4,25 +4,29 @@ var rdb = angular.module('rdb', ['ngResource', 'ngRoute']);
 
 rdb.config(function($routeProvider) {
     // Overview
+    console.log($routeProvider);
     $routeProvider.
-    when('/',
+    when("/",
         {
-            templateUrl: 'templates/overview.html',
+            templateUrl: "/templates/overview.html",
+            controller: "overviewController"
         }).
 
     // Recipe
-    when('/recipe/:recipeId', 
+    when("/recipe/:recipeId", 
         {
-            templateUrl: 'templates/recipe.html',
+            templateUrl: "/templates/recipe.html",
+            controller: "recipeController"
         }).
 
     // Otherwise: go to index
-    otherwise({templateUrl: 'templates/overview.html'});
+    otherwise({templateUrl: "/templates/overview.html"});
 });
 
 rdb.controller('overviewController', 
-    ['$scope', 'Recipes',
-        function($scope, Recipes) {
+    ['$scope', 'Recipes', '$route',
+        function($scope, Recipes, $route) {
+            console.log($route);
             var allRecipes = Recipes.all().$promise;
             allRecipes.then(
                 function(result) {
@@ -33,8 +37,9 @@ rdb.controller('overviewController',
 );
 
 rdb.controller('recipeController',
-    ['$scope', 'Recipes', 
-        function($scope, Recipes) {
+    ['$scope', 'Recipes', '$route',
+        function($scope, Recipes, $route) {
+            console.log($route);
             var recipe = Recipes.recipe({recipeId: "1"}).$promise;
             recipe.then(function(result) {
                 $scope.recipe = result.recipe;
