@@ -1,6 +1,6 @@
 <div>
     <masonry column-width="245" item-selector=".recipe">
-        <a ng-repeat='recipe in recipes' href='recipe/{{recipe.id}}'>
+        <a ng-repeat='recipe in recipes' href='#/recipe/{{recipe.id}}'>
             <div class="recipe">
                 <h1 class="recipe-title">{{recipe.name}}</h1>
                 <p><span class="glyphicon glyphicon-user">{{recipe.persons}}</span></p>
