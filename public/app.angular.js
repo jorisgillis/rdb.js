@@ -24,7 +24,7 @@ rdb.config(function($routeProvider) {
 
 rdb.controller('overviewController', 
     ['$scope', 'Recipes', '$route',
-        function($scope, Recipes, $route) {
+        function($scope, Recipes) {
             var allRecipes = Recipes.all().$promise;
             allRecipes.then(
                 function(result) {
@@ -35,9 +35,9 @@ rdb.controller('overviewController',
 );
 
 rdb.controller('recipeController',
-    ['$scope', 'Recipes', '$route',
-        function($scope, Recipes, $route) {
-            var recipe = Recipes.recipe({recipeId: "1"}).$promise;
+    ['$scope', 'Recipes', '$routeParams',
+        function($scope, Recipes, $routeParams) {
+            var recipe = Recipes.recipe({recipeId: $routeParams.recipeId}).$promise;
             recipe.then(function(result) {
                 $scope.recipe = result.recipe;
             })
