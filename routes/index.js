@@ -26,7 +26,7 @@ exports.overview = function(req, res) {
 
 exports.recipe = function(req, res) {
     var recipeId = req.param('recipeId');
-    db.Recipe.find(recipeId).success(
+    db.Recipe.find({where: {id: recipeId}, include: [{model: db.Ingredient, include: [db.Quantity]}, db.Photo, db.Type, db.Season]}).success(
         function(recipe) {
             res.json({'recipe': recipe})
         }
