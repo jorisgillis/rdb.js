@@ -40,6 +40,7 @@ rdb.controller('recipeController',
             var recipe = Recipes.recipe({recipeId: $routeParams.recipeId}).$promise;
             recipe.then(function(result) {
                 $scope.recipe = result.recipe;
+                $scope.ingredientList = result.ingredientList;
             })
         }
     ]

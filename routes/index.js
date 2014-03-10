@@ -1,4 +1,6 @@
 var db = require('../models');
+var _ = require('../node_modules/lodash/lodash.js');
+var async = require('../node_modules/async/lib/async.js');
 
 //-- Regular HTTP requests
 exports.index = function(req, res) {
@@ -26,9 +28,29 @@ exports.overview = function(req, res) {
 
 exports.recipe = function(req, res) {
     var recipeId = req.param('recipeId');
-    db.Recipe.find({where: {id: recipeId}, include: [{model: db.Ingredient, include: [db.Quantity]}, db.Photo, db.Type, db.Season]}).success(
+    db.Recipe.find({where: {id: recipeId}, include: [db.Ingredient, db.Photo, db.Type, db.Season]}).success(
         function(recipe) {
-            res.json({'recipe': recipe})
+            db.Quantity.findAll({where: {recipeId: recipeId}})
+            .then(function(rawQuantities) {
+                var quantities =  _.map(rawQuantities, function(rawQuantity) { return rawQuantity.dataValues; });
+                var ingredientIds = _.map(quantities, function(quantity) { return quantity.IngredientId; });
+                db.Ingredient.findAll({where: { id: ingredientIds } }).success(function(ingredients) {
+                    var ingredientList = createIngredientList(quantities, ingredients);
+                    res.json({'recipe': recipe, 'ingredientList': ingredientList});
+                });
+            });
         }
     );
+}
+
+
+function fetchIngredientsForQuantities(quantities) {
+    var ingredientIds = _.map(quantities, function(quantity) { return quantity.IngredientId; });
+    return db.Ingredient.findAll(ingredientIds);
+}
+
+function createIngredientList(quantities, ingredients) {
+    return _.zip(
+        _.map(quantities, function(quantity) { return quantity.quantity; }), 
+        _.map(ingredients, function(ingredient) { return ingredient.dataValues.name; }));
 }
