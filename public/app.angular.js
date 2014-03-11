@@ -18,8 +18,15 @@ rdb.config(function($routeProvider) {
             controller: "recipeController"
         }).
 
+    // Adding a recipe
+    when("/addrecipe",
+        {
+            templateUrl: "/templates/addrecipe.html",
+            controller: "addRecipeController"
+        }).
+
     // Otherwise: go to index
-    otherwise({templateUrl: "/templates/recipe.html"});
+    otherwise({redirectTo: '/'});
 });
 
 rdb.controller('overviewController', 
@@ -42,6 +49,15 @@ rdb.controller('recipeController',
                 $scope.recipe = result.recipe;
                 $scope.ingredientList = result.ingredientList;
             })
+        }
+    ]
+);
+
+
+rdb.controller('addRecipeController', 
+    ['$scope', 
+        function($scope) {
+
         }
     ]
 );
