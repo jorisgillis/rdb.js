@@ -1,6 +1,5 @@
 var db = require('../models');
 var _ = require('../node_modules/lodash/lodash.js');
-var async = require('../node_modules/async/lib/async.js');
 
 //-- Regular HTTP requests
 exports.index = function(req, res) {
@@ -35,7 +34,15 @@ exports.recipe = function(req, res) {
                 var quantities =  _.map(rawQuantities, function(rawQuantity) { return rawQuantity.dataValues; });
                 var ingredientIds = _.map(quantities, function(quantity) { return quantity.IngredientId; });
                 db.Ingredient.findAll({where: { id: ingredientIds } }).success(function(ingredients) {
-                    var ingredientList = createIngredientList(quantities, ingredients);
+                    var ingredientList = 
+                        _.map(
+                            _.zip(
+                                _.map(quantities, function(quantity) { return quantity.quantity; }), 
+                                _.map(ingredients, function(ingredient) { return ingredient.dataValues; })),
+                            function(pair) {
+                                return {'quantity': pair[0], 'ingredient': pair[1]};
+                            }
+                        );
                     res.json({'recipe': recipe, 'ingredientList': ingredientList});
                 });
             });
@@ -43,14 +50,3 @@ exports.recipe = function(req, res) {
     );
 }
 
-
-function fetchIngredientsForQuantities(quantities) {
-    var ingredientIds = _.map(quantities, function(quantity) { return quantity.IngredientId; });
-    return db.Ingredient.findAll(ingredientIds);
-}
-
-function createIngredientList(quantities, ingredients) {
-    return _.zip(
-        _.map(quantities, function(quantity) { return quantity.quantity; }), 
-        _.map(ingredients, function(ingredient) { return ingredient.dataValues.name; }));
-}
