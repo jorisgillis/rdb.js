@@ -1,6 +1,6 @@
 'use strict';
 
-var rdb = angular.module('rdb', ['ngResource', 'ngRoute']);
+var rdb = angular.module('rdb', ['ngResource', 'ngRoute', 'wu.masonry']);
 
 rdb.config(function($routeProvider) {
     // Overview

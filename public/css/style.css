@@ -16,17 +16,13 @@ body {
 
 .recipe-title {
     font-size: 115%;
-    text-align: center;
+    text-align: left;
     margin-top: 2px;
     padding-bottom: 5px;
     border-bottom: 1px dashed #777;
 }
 
-masonry {
-    width: 100%;
-}
-
-.recipe {
+.recipebox {
     width: 240px;
     border: 1px solid #999999;
     margin-top: 3px;
