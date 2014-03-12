@@ -1,0 +1,42 @@
+<div>
+	<form novalidate class="css-form">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<h5 class="list-group-item-heading">Naam</h5>
+				<div class="list-group-item-text">
+					<input type="text" size="80" ng-model="recipe.name" required />
+				</div>
+			</li>
+			<li class="list-group-item">
+				<h5 class="list-group-item-heading">Bereidingstijd</h5>
+				<div class="list-group-item-text">
+					<input type="text" ng-model="recipe.preparationTime" required />
+				</div>
+			</li>
+			<li class="list-group-item">
+				<h5 class="list-group-item-heading">Aantal personen</h5>
+				<div class="list-group-item-text">
+					<input type="text" ng-model="recipe.persons" required />
+				</div>
+			</li>
+			<li class="list-group-item">
+				<h5 class="list-group-item-heading">Vegetarisch?</h5>
+				<div class="list-group-item-text">
+					<input type="checkbox" ng-model="recipe.vegetarian" />
+				</div>
+			</li>
+			<li class="list-group-item">
+				<h5 class="list-group-item-heading">Bereiding</h5>
+				<div class="list-group-item-text">
+					<textarea cols="100" rows="15" ng-model="recipe.preparation" />
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="list-group-item-text">
+					<button class="btn btn-danger" ng-click="reset()">Opnieuw</button>
+					<button class="btn btn-success" ng-click="save()" ng-disabled="form.$invalid">Opslaan</button>
+				</div>
+			</li>
+		</div>
+	</form>
+</div>
