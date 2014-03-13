@@ -1,6 +1,6 @@
 'use strict';
 
-var rdb = angular.module('rdb', ['ngResource', 'ngRoute', 'wu.masonry']);
+var rdb = angular.module('rdb', ['ngResource', 'ngRoute', 'wu.masonry', 'localytics.directives']);
 
 rdb.config(function($routeProvider) {
     // Overview

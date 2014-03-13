@@ -26,6 +26,12 @@
 				</div>
 			</li>
 			<li class="list-group-item">
+				<h5 class="list-group-item-heading">Type</h5>
+				<div class="list-group-item-text">
+					<select chosen multiple ng-options="type for type in types">
+				</div>
+			</li>
+			<li class="list-group-item">
 				<h5 class="list-group-item-heading">Bereiding</h5>
 				<div class="list-group-item-text">
 					<textarea cols="100" rows="15" ng-model="recipe.preparation" />
