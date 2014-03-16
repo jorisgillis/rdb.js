@@ -50,3 +50,15 @@ exports.recipe = function(req, res) {
     );
 }
 
+exports.ingredient = function(req, res) {
+    var ingredientId = req.param('ingredientId');
+    db.Ingredient.find({where: {id: ingredientId}}).then(function(ingredient) {
+        res.json({'ingredient': ingredient});
+    });
+}
+
+exports.ingredients = function(req, res) {
+    db.Ingredient.findAll().then(function(ingredients) {
+        res.json({'ingredients': ingredients})
+    });
+}

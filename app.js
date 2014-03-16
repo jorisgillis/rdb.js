@@ -51,6 +51,9 @@ app.get('/logout', routes.logout);
 app.get('/api/recipe/:recipeId', routes.recipe);
 app.get('/api/recipe', routes.overview);
 
+app.get('/api/ingredients/:ingredientId', routes.ingredient);
+app.get('/api/ingredients', routes.ingredients);
+
 // Fallback URL
 app.get('*', routes.index);
 
