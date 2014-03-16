@@ -4,6 +4,7 @@ html(lang="en")
         title Recepten database
         link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet', href='/bower_components/angular-chosen-localytics/chosen-spinner.css')
+        link(rel='stylesheet', href='/bower_components/chosen/public/chosen.css')
         link(rel='stylesheet', href='/css/style.css')
     body
         block navbar
@@ -12,24 +13,5 @@ html(lang="en")
             block content
         
         block javascript
-            script(src='/bower_components/jquery/jquery.min.js')
-            script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
-            script(src='/bower_components/jquery/jquery.js')
-            script(src='/bower_components/jquery-bridget/jquery.bridget.js')
-            script(src='/bower_components/angular/angular.js')
-            script(src='/bower_components/get-style-property/get-style-property.js')
-            script(src='/bower_components/get-size/get-size.js')
-            script(src='/bower_components/eventEmitter/EventEmitter.js')
-            script(src='/bower_components/eventie/eventie.js')
-            script(src='/bower_components/doc-ready/doc-ready.js')
-            script(src='/bower_components/matches-selector/matches-selector.js')
-            script(src='/bower_components/outlayer/item.js')
-            script(src='/bower_components/outlayer/outlayer.js')
-            script(src='/bower_components/masonry/masonry.js')
-            script(src='/bower_components/imagesloaded/imagesloaded.js')
-            script(src='/bower_components/angular-masonry/angular-masonry.js')
-            script(src='/bower_components/angular-resource/angular-resource.js')
-            script(src='/bower_components/angular-route/angular-route.js')
-            script(src='/bower_components/angular-chosen-localytics/chosen.js')
-            script(src='/app.angular.js')
-
+            script(src='/bower_components/requirejs/requirejs.js' data-main='app.angular.js')
+            
