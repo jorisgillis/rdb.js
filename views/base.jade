@@ -6,12 +6,11 @@ html(lang="en")
         link(rel='stylesheet', href='/bower_components/angular-chosen-localytics/chosen-spinner.css')
         link(rel='stylesheet', href='/bower_components/chosen/public/chosen.css')
         link(rel='stylesheet', href='/css/style.css')
+        script(data-main='app.angular.js' src='/bower_components/requirejs/requirejs.js' type="text/js")
     body
         block navbar
 
         div(class='container')
             block content
-        
+
         block javascript
-            script(src='/bower_components/requirejs/requirejs.js' data-main='app.angular.js')
-            
