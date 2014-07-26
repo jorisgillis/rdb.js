@@ -18,11 +18,18 @@ exports.logout = function(req, res) {
 
 //-- REST API
 exports.overview = function(req, res) {
-  db.Recipe.findAll().success(
+  db.Recipe.findAll({'include': [db.Photo]}).success(
     function(recipes) {
-      res.json({'recipes': recipes});
+      var output_recipes = _.map(recipes,
+        function(o) { return _.assign(o.dataValues, {'photos': o.photoes }); }
+        ).valueOf();
+      res.json(
+        {
+          'recipes': output_recipes,
+        }
+      );
     }
-  );
+  )
 }
 
 exports.recipe = function(req, res) {
