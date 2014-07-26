@@ -40,7 +40,16 @@ requirejs(['angular'], function(angular) {
 
 
   //--- CONTROLLERS
-
+  rdb.controller('overviewController', ['$scope', 'Recipes', '$route',
+  function($scope, Recipes) {
+    var allRecipes = Recipes.all().$promise;
+    allRecipes.then(
+      function(result) {
+        $scope.recipes = result.recipes;
+      });
+    }
+    ]
+  );
 
   rdb.controller('recipeController',
   ['$scope', 'Recipes', '$routeParams',
