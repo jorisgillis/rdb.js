@@ -63,6 +63,7 @@ exports.recipe = function(req, res) {
         );
       }
 
+
       exports.ingredient = function(req, res) {
         var ingredientId = req.param('ingredientId');
         db.Ingredient.find({where: {id: ingredientId}}).then(function(ingredient) {
