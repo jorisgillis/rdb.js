@@ -1,5 +1,5 @@
 var db = require('../models');
-var _ = require('../node_modules/lodash/lodash.js');
+var _  = require('../node_modules/lodash/lodash.js');
 
 //-- Regular HTTP requests
 exports.index = function(req, res) {

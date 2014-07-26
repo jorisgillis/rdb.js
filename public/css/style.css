@@ -2,6 +2,10 @@ body {
     padding-top: 70px;
 }
 
+a.recipe-title {
+  color: hsla(0, 0%, 98%, 1);
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;
@@ -24,9 +28,11 @@ body {
 
 .recipebox {
     width: 240px;
-    border: 1px solid #999999;
     margin-top: 3px;
     margin-left: 5px;
     margin-right: 5px;
-    padding: 4px;
+}
+
+.recipe-heading {
+  background-color: hsla(101, 46%, 51%, 1);
 }

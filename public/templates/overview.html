@@ -1,10 +1,17 @@
 <div masonry>
-    <div class="masonry-brick recipebox" ng-repeat='recipe in recipes'>
-        <a href='#/recipe/{{recipe.id}}'>
-            <h1 class="recipe-title">{{recipe.name}}</h1>
+    <div class="masonry-brick panel panel-default recipebox" ng-repeat='recipe in recipes'>
+        <a class="recipe-title" href='#/recipe/{{recipe.id}}'>
+          <div class="panel-heading recipe-heading">
+            <h1 class="panel-title">{{recipe.name}}</h1>
+          </div>
         </a>
-        <p><span class="glyphicon glyphicon-user">{{recipe.persons}}</span></p>
-        <p><span class="glyphicon glyphicon-time">{{recipe.preparationTime}}</span></p>
-        <p><span class="glyphicon glyphicon-tree-deciduous" ng-show='recipe.vegetarian'></span></p>
+        <div class="panel-body">
+
+        </div>
+        <div class="panel-footer">
+          <p><span class="glyphicon glyphicon-user">{{recipe.persons}}</span></p>
+          <p><span class="glyphicon glyphicon-time">{{recipe.preparationTime}}</span></p>
+          <p><span class="glyphicon glyphicon-tree-deciduous" ng-show='recipe.vegetarian'></span></p>
+        </div>
     </div>
 </div>
