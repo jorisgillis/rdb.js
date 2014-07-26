@@ -34,45 +34,50 @@ exports.recipe = function(req, res) {
         var quantities =  _.map(rawQuantities,
           function(rawQuantity) {
             return rawQuantity.dataValues;
-          });
-          var ingredientIds = _.map(quantities,
-            function(quantity) {
-              return quantity.IngredientId;
-            });
-          db.Ingredient.findAll({where: { id: ingredientIds } }).success(function(ingredients) {
-            var ingredientList =
-            _.map(
-              _.zip(
-                _.map(quantities,
-                  function(quantity) {
-                    return quantity.quantity;
-                  }),
-                  _.map(ingredients,
-                    function(ingredient) {
-                      return ingredient.dataValues;
-                    })
-                  ),
-                  function(pair) {
-                    return {'quantity': pair[0], 'ingredient': pair[1]};
-                  }
-                );
-                res.json({'recipe': recipe, 'ingredientList': ingredientList});
-              });
-            });
           }
         );
-      }
+        var ingredientIds = _.map(quantities,
+          function(quantity) {
+            return quantity.IngredientId;
+          }
+        );
+        db.Ingredient.findAll({where: { id: ingredientIds } }).success(function(ingredients) {
+          var ingredientList =
+          _.map(
+            _.zip(
+              _.map(quantities,
+                function(quantity) {
+                  return quantity.quantity;
+                }),
+                _.map(ingredients,
+                  function(ingredient) {
+                    return ingredient.dataValues;
+                  })
+                ),
+                function(pair) {
+                  return {'quantity': pair[0], 'ingredient': pair[1]};
+                }
+              );
+              res.json({'recipe': recipe, 'ingredientList': ingredientList});
+            }
+          );
+        }
+      );
+    }
+  );
+}
 
 
-      exports.ingredient = function(req, res) {
-        var ingredientId = req.param('ingredientId');
-        db.Ingredient.find({where: {id: ingredientId}}).then(function(ingredient) {
-          res.json({'ingredient': ingredient});
-        });
-      }
+exports.ingredient = function(req, res) {
+  var ingredientId = req.param('ingredientId');
+  db.Ingredient.find({where: {id: ingredientId}})
+  .then(function(ingredient) {
+    res.json({'ingredient': ingredient});
+  });
+}
 
-      exports.ingredients = function(req, res) {
-        db.Ingredient.findAll().then(function(ingredients) {
-          res.json({'ingredients': ingredients})
-        });
-      }
+exports.ingredients = function(req, res) {
+  db.Ingredient.findAll().then(function(ingredients) {
+    res.json({'ingredients': ingredients})
+  });
+}
